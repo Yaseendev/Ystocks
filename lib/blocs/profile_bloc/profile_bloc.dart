@@ -24,11 +24,14 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
             } catch (e) {
               emit(ProfileError(errMessage: 'There was an unkwon error'));
             }
-          }
-           else {
+          } else {
             emit(ProfileNoInternet());
           }
         });
+      } else if (event is SaveProfileData) {
+        await profileRepo.saveStockData(event.symbol);
+      } else if (event is UnSaveProfileData) {
+        await profileRepo.unsaveStockData(event.symbol);
       }
     });
   }

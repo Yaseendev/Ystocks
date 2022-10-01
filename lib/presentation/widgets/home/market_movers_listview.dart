@@ -5,9 +5,12 @@ import 'market_movers_listTile.dart';
 
 class MarketMoversListView extends StatelessWidget {
   final Color color;
+  final Color? txtColor;
   final List<MarketMover> stocks;
   const MarketMoversListView(
-      {Key? key, required this.color, required this.stocks})
+      {Key? key, required this.color, required this.stocks,
+      this.txtColor,
+      })
       : super(key: key);
 
   @override
@@ -22,6 +25,7 @@ class MarketMoversListView extends StatelessWidget {
           itemBuilder: (BuildContext context, int index) => MarketMoversListTile(
                 marketMover: stocks[index],
                 color: color,
+                txtColor: txtColor,
               )),
     );
   }

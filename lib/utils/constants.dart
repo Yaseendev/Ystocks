@@ -5,6 +5,7 @@ const kSharpBorder = const BorderRadius.all(Radius.circular(2));
 const kStandatBorder = const BorderRadius.all(Radius.circular(6));
 final String? kFinancialModelingPrepApi = dotenv.env['FINANCIAL_API_KEY'];
 const String kSymbolsBoxName = 'symbolsBox';
+const String kSearchBoxName = 'symbolsBox';
 
 class Urls {
   static const String kAlphavantageUrl = 'www.alphavantage.co';

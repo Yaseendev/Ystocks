@@ -3,8 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stocks_market/blocs/market_bloc/market_bloc.dart';
 import 'package:stocks_market/blocs/profile_bloc/profile_bloc.dart';
+import 'package:stocks_market/utils/services/database_service.dart';
 
+import 'bookmarks_screen.dart';
 import 'home_screen.dart';
+import 'search_screen.dart';
 
 class PrimaryScreen extends StatefulWidget {
   const PrimaryScreen({Key? key}) : super(key: key);
@@ -28,16 +31,15 @@ class _PrimaryScreenState extends State<PrimaryScreen> {
   void initState() {
     pageController = PageController(initialPage: 0);
     _pages.addAll([
-              BlocProvider(
-              create: (context) => MarketBloc(),
-      
-                  child: HomeScreen(),
+      BlocProvider(
+        create: (context) => MarketBloc(),
+        child: HomeScreen(),
       ),
-      Container(),
+      SearchScreen(),
       Container(),
       Container(),
     ]);
-    super.initState();
+    super.initState(); 
   }
 
   @override
@@ -65,6 +67,21 @@ class _PrimaryScreenState extends State<PrimaryScreen> {
           ],
         ),
         centerTitle: false,
+        actions: _currentIndex == 0
+            ? [
+                IconButton(
+                  onPressed: () async {
+                    final symbolBox = await DatabaseService.getSymbolsBox();
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (_) => BookmarksScreen(
+                              symbolsBox: symbolBox,
+                            )));
+                  },
+                  icon: Icon(Icons.bookmarks),
+                  color: Colors.black,
+                ),
+              ]
+            : null,
       ),
       body: _pages[_currentIndex],
       bottomNavigationBar: ConvexAppBar(

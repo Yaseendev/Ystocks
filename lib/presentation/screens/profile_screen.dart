@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stocks_market/blocs/profile_bloc/profile_bloc.dart';
+import 'package:stocks_market/utils/color_helper.dart';
 
 import '../widgets/profile/profile_body.dart';
 
@@ -25,8 +26,8 @@ class ProfileScreen extends StatelessWidget {
         if (state is ProfileLoaded) {
           return ProfileBody(
             profile: state.profile!,
-            color: Colors.orange,
-            //determineColorBasedOnChange(state.profileModel.stockProfile.changes),
+            symbol: symbol,
+            color: determineColorBasedOnChange(state.profile?.stockProfile.changes ?? 0),
           );
         }
         return Scaffold(

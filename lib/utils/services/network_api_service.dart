@@ -23,4 +23,6 @@ class NetworkApiService {
         Urls.kMarketUrl, endpoint, {'apikey': kFinancialModelingPrepApi}));
     return response.data;
   }
+
+ 
 }

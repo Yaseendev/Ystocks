@@ -41,4 +41,12 @@ class ProfileRepository {
       symbolSaved: await _databaseService.checkSymbol(symbol),
     );
   }
+
+  Future saveStockData(String symbol) async {
+    await _databaseService.saveSymbol(symbol);
+  }
+
+  Future unsaveStockData(String symbol) async {
+    await _databaseService.unsaveSymbol(symbol);
+  }
 }

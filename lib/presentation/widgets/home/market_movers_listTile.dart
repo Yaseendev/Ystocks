@@ -7,8 +7,14 @@ import 'package:stocks_market/utils/constants.dart';
 
 class MarketMoversListTile extends StatelessWidget {
   final Color color;
+  final Color? txtColor;
   final MarketMover marketMover;
-  const MarketMoversListTile({Key? key, required this.color, required this.marketMover}) : super(key: key);
+  const MarketMoversListTile({
+    Key? key,
+    required this.color,
+    required this.marketMover,
+    this.txtColor,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -25,11 +31,12 @@ class MarketMoversListTile extends StatelessWidget {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (_) => BlocProvider<ProfileBloc>(
-                            create: (context) => ProfileBloc()..add(FetchProfileData(symbol: marketMover.ticker)),
-                            child: ProfileScreen(symbol: marketMover.ticker),
-                          ),
-                      ));
+                    builder: (_) => BlocProvider<ProfileBloc>(
+                      create: (context) => ProfileBloc()
+                        ..add(FetchProfileData(symbol: marketMover.ticker)),
+                      child: ProfileScreen(symbol: marketMover.ticker),
+                    ),
+                  ));
             },
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -37,10 +44,13 @@ class MarketMoversListTile extends StatelessWidget {
               children: <Widget>[
                 Text(marketMover.ticker,
                     style:
-                        TextStyle(fontWeight: FontWeight.bold, fontSize: 12.5)),
-
+                        TextStyle(fontWeight: FontWeight.bold, fontSize: 12.5, 
+                        color: txtColor,
+                        )),
                 SizedBox(height: 5),
-                Text(marketMover.changesPercentage),
+                Text(marketMover.changesPercentage, style: TextStyle(
+                      color: txtColor,
+                    )),
               ],
             ),
           ),

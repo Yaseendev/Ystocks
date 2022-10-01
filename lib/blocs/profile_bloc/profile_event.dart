@@ -13,5 +13,23 @@ class FetchProfileData extends ProfileEvent {
   FetchProfileData({required this.symbol});
 
   @override
-  List<Object> get props => [];
+  List<Object> get props => [symbol];
+}
+
+class SaveProfileData extends ProfileEvent {
+  final String symbol;
+
+  SaveProfileData({required this.symbol});
+
+  @override
+  List<Object> get props => [symbol];
+}
+
+class UnSaveProfileData extends ProfileEvent {
+  final String symbol;
+
+  UnSaveProfileData({required this.symbol});
+
+  @override
+  List<Object> get props => [symbol];
 }

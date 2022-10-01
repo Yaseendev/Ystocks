@@ -48,6 +48,7 @@ class HomeScreen extends StatelessWidget {
               ),
               MarketMoversListView(
                 color: Color(0xFF263497),
+                txtColor: Colors.white,
                 stocks: state.marketActive ?? [],
               ),
               Padding(
