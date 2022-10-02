@@ -2,11 +2,14 @@ import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stocks_market/blocs/market_bloc/market_bloc.dart';
+import 'package:stocks_market/blocs/news_bloc/news_bloc.dart';
 import 'package:stocks_market/blocs/profile_bloc/profile_bloc.dart';
+import 'package:stocks_market/blocs/search_bloc/search_bloc.dart';
 import 'package:stocks_market/utils/services/database_service.dart';
 
 import 'bookmarks_screen.dart';
 import 'home_screen.dart';
+import 'news_screen.dart';
 import 'search_screen.dart';
 
 class PrimaryScreen extends StatefulWidget {
@@ -31,15 +34,18 @@ class _PrimaryScreenState extends State<PrimaryScreen> {
   void initState() {
     pageController = PageController(initialPage: 0);
     _pages.addAll([
-      BlocProvider(
+      BlocProvider<MarketBloc>(
         create: (context) => MarketBloc(),
         child: HomeScreen(),
       ),
       SearchScreen(),
-      Container(),
+      BlocProvider<NewsBloc>(
+        create: (context) => NewsBloc(),
+        child: NewsScreen(),
+      ),
       Container(),
     ]);
-    super.initState(); 
+    super.initState();
   }
 
   @override

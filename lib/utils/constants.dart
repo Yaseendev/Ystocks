@@ -4,12 +4,15 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 const kSharpBorder = const BorderRadius.all(Radius.circular(2));
 const kStandatBorder = const BorderRadius.all(Radius.circular(6));
 final String? kFinancialModelingPrepApi = dotenv.env['FINANCIAL_API_KEY'];
+final String kAlphaVantageKey = '2H0S6RCP3497QCMZ'; //TODO: isolate
+final String kNewsKey = '0f1ee4042d3e4b0e9596417151680e10'; //TODO: isolate
 const String kSymbolsBoxName = 'symbolsBox';
 const String kSearchBoxName = 'symbolsBox';
 
 class Urls {
   static const String kAlphavantageUrl = 'www.alphavantage.co';
   static const String kMarketUrl = 'financialmodelingprep.com';
+  static const String kNewsUrl = 'newsapi.org';
   static const String kMarketPath = '/api/v3';
   static const String kMarketStockPath = '$kMarketPath/stock';
   static const String kMarketStockActives = kMarketStockPath + '/actives';
@@ -18,6 +21,8 @@ class Urls {
   static const String kMarketProfile = kMarketPath + '/company/profile/';
   static const String kMarketQuote = kMarketPath + '/quote/';
   static const String kMarketChart = kMarketPath + '/historical-price-full/';
+  static const String kQueryPath = '/query';
+  static const String kNewsPath = '/v2/everything';
 }
 
 class AppColors {

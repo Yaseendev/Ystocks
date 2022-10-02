@@ -5,6 +5,7 @@ import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:stocks_market/data/respositories/market_repository.dart';
 import 'package:stocks_market/data/respositories/profile_repository.dart';
+import 'package:stocks_market/data/respositories/search_repository.dart';
 import 'package:stocks_market/utils/services/database_service.dart';
 import 'routes.dart';
 import 'services/network_api_service.dart';
@@ -36,5 +37,6 @@ Future locatorsSetup() async{
     ..registerLazySingleton<Connectivity>(() => Connectivity())
     ..registerLazySingleton<DatabaseService>(() => DatabaseService())
     ..registerLazySingleton<MarketRepository>(() => MarketRepository())
-    ..registerLazySingleton<ProfileRepository>(() => ProfileRepository());
+    ..registerLazySingleton<ProfileRepository>(() => ProfileRepository())
+    ..registerLazySingleton<SearchRepository>(() => SearchRepository());
 }

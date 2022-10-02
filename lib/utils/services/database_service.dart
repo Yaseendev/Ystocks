@@ -1,4 +1,5 @@
 import 'package:hive/hive.dart';
+import 'package:stocks_market/data/models/search.dart';
 import 'package:stocks_market/utils/constants.dart';
 
 class DatabaseService {
@@ -6,13 +7,6 @@ class DatabaseService {
     final symbolsBox = await getSymbolsBox();
     if (!symbolsBox.containsKey(symbol)) {
       symbolsBox.put(symbol, symbol);
-    }
-  }
-
-  Future saveSearch(String symbol) async {
-    final searchBox = await getSearchBox();
-    if (!searchBox.containsKey(symbol)) {
-      searchBox.put(symbol, symbol);
     }
   }
 
@@ -26,6 +20,20 @@ class DatabaseService {
     if (symbolsBox.containsKey(symbol)) {
       symbolsBox.delete(symbol);
     }
+  }
+
+  Future saveSearch(String symbol) async {
+    final searchBox = await getSearchBox();
+    if (!searchBox.containsKey(symbol)) {
+      searchBox.put(symbol, symbol);
+    }
+  }
+
+  Future<List<StockSearch>> fetchSearch() async {
+    final searchBox = await getSearchBox();
+    return searchBox.values
+        .map((e) => StockSearch(symbol: e.toString()))
+        .toList();
   }
 
   Future deleteSearch(String symbol) async {
