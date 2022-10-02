@@ -26,8 +26,7 @@ class SearchResultsWidget extends StatelessWidget {
               ),
             ));
 
-        BlocProvider.of<SearchBloc>(context)
-            .add(SaveSearchHistory(search.symbol));
+        BlocProvider.of<SearchBloc>(context).add(SaveSearchHistory(search.symbol));
       },
     );
   }

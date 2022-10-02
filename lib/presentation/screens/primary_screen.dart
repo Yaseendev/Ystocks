@@ -11,6 +11,7 @@ import 'bookmarks_screen.dart';
 import 'home_screen.dart';
 import 'news_screen.dart';
 import 'search_screen.dart';
+import 'settings_screen.dart';
 
 class PrimaryScreen extends StatefulWidget {
   const PrimaryScreen({Key? key}) : super(key: key);
@@ -43,7 +44,7 @@ class _PrimaryScreenState extends State<PrimaryScreen> {
         create: (context) => NewsBloc(),
         child: NewsScreen(),
       ),
-      Container(),
+      SettingsScreen(),
     ]);
     super.initState();
   }
@@ -61,7 +62,9 @@ class _PrimaryScreenState extends State<PrimaryScreen> {
             Text(
               pagesHeaders.keys.elementAt(_currentIndex),
               style: TextStyle(
-                  color: Colors.black,
+                  color: Theme.of(context).brightness == Brightness.light
+                      ? Colors.black
+                      : null,
                   fontSize: 28,
                   fontWeight: FontWeight.bold),
             ),
@@ -84,13 +87,18 @@ class _PrimaryScreenState extends State<PrimaryScreen> {
                             )));
                   },
                   icon: Icon(Icons.bookmarks),
-                  color: Colors.black,
+                  color: Theme.of(context).brightness == Brightness.light
+                      ? Colors.black
+                      : null,
                 ),
               ]
             : null,
       ),
       body: _pages[_currentIndex],
       bottomNavigationBar: ConvexAppBar(
+        backgroundColor: Theme.of(context).brightness == Brightness.light
+            ? Theme.of(context).primaryColor
+            : Theme.of(context).bottomAppBarColor,
         style: TabStyle.react,
         items: [
           TabItem(icon: Icons.home, title: 'Home'),

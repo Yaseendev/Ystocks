@@ -4,10 +4,10 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 const kSharpBorder = const BorderRadius.all(Radius.circular(2));
 const kStandatBorder = const BorderRadius.all(Radius.circular(6));
 final String? kFinancialModelingPrepApi = dotenv.env['FINANCIAL_API_KEY'];
-final String kAlphaVantageKey = '2H0S6RCP3497QCMZ'; //TODO: isolate
-final String kNewsKey = '0f1ee4042d3e4b0e9596417151680e10'; //TODO: isolate
+final String kAlphaVantageKey = dotenv.env['ALPHA_VANTAGE_KEY'] ?? '';
+final String kNewsKey = dotenv.env['NEWS_KEY'] ??'';
 const String kSymbolsBoxName = 'symbolsBox';
-const String kSearchBoxName = 'symbolsBox';
+const String kSearchBoxName = 'searchBox';
 
 class Urls {
   static const String kAlphavantageUrl = 'www.alphavantage.co';

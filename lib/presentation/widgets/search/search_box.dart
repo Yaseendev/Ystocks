@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:stocks_market/blocs/search_bloc/search_bloc.dart';
 
 class SearchBox extends StatelessWidget {
   const SearchBox({
@@ -22,7 +24,13 @@ class SearchBox extends StatelessWidget {
                 hintStyle: TextStyle(fontSize: 15.5),
                 border: InputBorder.none,
               ),
-              onChanged: (val) {},
+              onChanged: (val) {
+                val.isNotEmpty
+                    ? context
+                        .read<SearchBloc>()
+                        .add(FetchSearchResult(symbol: val.toUpperCase()))
+                    : context.read<SearchBloc>().add(FetchSearchHistory());
+              },
             ),
           ),
         ],

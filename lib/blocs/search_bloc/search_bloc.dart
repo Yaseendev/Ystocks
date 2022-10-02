@@ -13,13 +13,14 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
     final SearchRepository searchRepo = locator.get<SearchRepository>();
     on<SearchEvent>((event, emit) async {
       if (event is FetchSearchHistory) {
-         _fetchSavedSearches(emit, searchRepo);
+         await _fetchSavedSearches(emit, searchRepo);
+         
       } else if (event is SaveSearchHistory) {
         await searchRepo.saveSearchData(event.symbol);
-        _fetchSavedSearches(emit, searchRepo);
+       await _fetchSavedSearches(emit, searchRepo);
       } else if (event is DeleteSearch) {
         await searchRepo.deleteSearchData(event.symbol);
-        _fetchSavedSearches(emit, searchRepo);
+        await _fetchSavedSearches(emit, searchRepo);
       } else if(event is FetchSearchResult) {
         final Connectivity connectivity = locator.get<Connectivity>();
         await connectivity.checkConnectivity().then((connStatus) async {
@@ -40,14 +41,14 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
     });
   }
 
-  void _fetchSavedSearches(Emitter<SearchState> emit,
+  Future<void> _fetchSavedSearches(Emitter<SearchState> emit,
       SearchRepository searchRepo) async {
     emit(SearchLoading());
     await searchRepo.fetchSearchData().then((result) {
       result.isNotEmpty
           ? emit(
               SearchDataLoaded(data: result, listType: ListType.searchHistory))
-          : SearchResultsError('No Recent Searches');
+          : emit(SearchResultsError('No Recent Searches'));
     }).onError((error, stackTrace) {
       emit(SearchResultsError('Unknown Error Occured'));
     });

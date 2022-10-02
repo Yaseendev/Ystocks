@@ -10,12 +10,12 @@ class SearchScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<SearchBloc>(
-        create: (context) => SearchBloc()..add(FetchSearchHistory()),
-      child: ListView(
-        shrinkWrap: true,
+      create: (context) => SearchBloc()..add(FetchSearchHistory()),
+      child: Column(
+        //shrinkWrap: true,
         children: [
           SearchBox(),
-          SearchBody(),
+          Expanded(child: SearchBody()),
         ],
       ),
     );
