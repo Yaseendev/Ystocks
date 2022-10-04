@@ -4,7 +4,12 @@ A Flutter Stock market app with many features. Inspired by [JoshuaR503 App](http
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+- Display available stocks to user.
+- Display most active,top gainers and top losers to user.
+- Display detailed information about a single stock.
+- Stocks search feature with localy saved history.
+- Save and delete stocks localy on the device.
+- 
 
 A few resources to get you started if this is your first Flutter project:
 
