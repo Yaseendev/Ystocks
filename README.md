@@ -1,6 +1,6 @@
 # stocks_market
 
-A Flutter Stock market app with many features. Inspired by [JoshuaR503 App] (https://github.com/JoshuaR503/Stock-Market-App)
+A Flutter Stock market app with many features. Inspired by [JoshuaR503 App](https://github.com/JoshuaR503/Stock-Market-App)
 
 ## Getting Started
 
