@@ -12,11 +12,5 @@ A Flutter Stock market app with many features. Inspired by [JoshuaR503 App](http
 - Users can see news about stocks.
 - Light/Dark themes support.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![Finished App](/demo/1.png) ![Finished App2](/demo/2.png) ![Finished App3](/demo/3.png) ![Finished App4](/demo/4.png)
+![Finished App5](/demo/5.png) ![Finished App6](/demo/6.png) ![Finished App7](/demo/7.png) ![Finished App8](/demo/8.png)
