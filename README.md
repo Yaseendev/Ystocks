@@ -1,4 +1,4 @@
-# stocks_market
+# Y Stocks Market
 
 A Flutter Stock market app with many features.
 
