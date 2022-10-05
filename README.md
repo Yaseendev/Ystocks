@@ -2,7 +2,7 @@
 
 A Flutter Stock market app with many features.
 
-## Getting Started
+## Features
 
 - Display available stocks to users.
 - Display most active,top gainers and top losers to users.
